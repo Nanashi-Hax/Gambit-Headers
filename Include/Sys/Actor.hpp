@@ -7,11 +7,11 @@ namespace Sys
     public:
         struct VTable
         {
-            struct ActorBase::VTable base;
+            ActorBase::VTable base;
             int p0;
             void *checkDerivedRuntimeTypeInfo;
             int p1;
-            void *unknown;
+            void *getRuntimeTypeInfo;
             int p2;
             void *onLoad;
             int p3;
@@ -41,7 +41,7 @@ namespace Sys
             int p15;
             void *getClassName;
             int p16;
-            void *getDbgMtx;
+            void *getModelRTMtx;
             int p17;
             void *getModelScale;
             int p18;
