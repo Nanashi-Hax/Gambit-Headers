@@ -1,0 +1,19 @@
+#pragma once
+#include "Utils.hpp"
+
+#include "Cmn/Def/DMG.hpp"
+#include "Game/Player.hpp"
+#include "Game/Bullet.hpp"
+#include "sead/Vector3.hpp"
+
+namespace Game
+{
+    class PlayerCollision
+    {
+    public:
+        BIND_METHOD(0x0E67B840, Cmn::Def::DMG, processDamageFromBullet_, PlayerCollision, Bullet* bullet, sead::Vector3<float>* knockback, Cmn::Def::DMG damage)
+        CONNECT_METHOD(processDamageFromBullet_, PlayerCollision, bullet, knockback, damage)
+
+        Game::Player* player;
+    };
+}

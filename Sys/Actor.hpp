@@ -1,13 +1,15 @@
+#pragma once
+#include <cstdint>
+
 #include "Sys/ActorBase.hpp"
 
 namespace Sys
 {
-    class Actor
+    class Actor : public ActorBase
     {
     public:
-        struct VTable
+        struct VTable : public ActorBase::VTable
         {
-            ActorBase::VTable base;
             int p0;
             void *checkDerivedRuntimeTypeInfo;
             int p1;
@@ -75,5 +77,14 @@ namespace Sys
             int p32;
             void *xlinkCalc;
         };
+
+        void* model;
+        uint32_t calcSkipMask;
+        uint32_t listNode[2];
+        void* actorMgr;
+        int unknown0[2];
+        uint32_t index;
     };
 }
+
+static_assert(sizeof(Sys::Actor) == 0x28, "Struct size is incorrect");
