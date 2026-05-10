@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include "Utils.hpp"
+#include "Macro.hpp"
 
 #include "Game/DamageReason.hpp"
 #include "Cmn/Def/DMG.hpp"

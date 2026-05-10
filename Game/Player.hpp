@@ -1,7 +1,11 @@
 #pragma once
 #include <cstdint>
+#include "Cmn/PlayerInfo.hpp"
+#include "Macro.hpp"
 
+#include "Cmn/Def/DMG.hpp"
 #include "Cmn/GambitActor.hpp"
+#include "Game/DamageReason.hpp"
 
 namespace Game
 {
@@ -19,11 +23,17 @@ namespace Game
 
         };
 
+        BIND_METHOD(0x0E641C1C, void, onFirstCalc, Player)
+        CONNECT_METHOD(onFirstCalc, Player)
+
+        BIND_METHOD(0x0E645F2C, Cmn::Def::DMG, informDamage_Impl, Player, int attackerPlayerIndex, DamageReason *reason, bool u0, bool u1, Cmn::Def::DMG damage)
+        CONNECT_METHOD(informDamage_Impl, Player, attackerPlayerIndex, reason, u0, u1, damage)
+
         PlayerControlType controlType;
         int unknown0[0x12];
         int playerIndex;
         int unknown1;
-        void* playerInfo;
+        Cmn::PlayerInfo* playerInfo;
         void* playerMgr;
         int unknown2[0x14];
         bool specialTrigger;

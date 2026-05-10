@@ -32,5 +32,5 @@
     }
 
 #define VARIABLE(addr, type, name) \
-    inline static type &name = *reinterpret_cast<type *>(addr);
+    inline static type &name = *reinterpret_cast<type *>(addr)
     

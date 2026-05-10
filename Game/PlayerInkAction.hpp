@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils.hpp"
+#include "Macro.hpp"
 
 #include "sead/Vector3.hpp"
 #include "Cmn/KDUtl.hpp"
@@ -30,6 +30,9 @@ namespace Game
 
         BIND_METHOD(0x0E6902AC, int, FUN_026902ac, PlayerInkAction)
         CONNECT_METHOD(FUN_026902ac, PlayerInkAction)
+
+        BIND_METHOD(0x0E6944B4, void, shotBombInstant, PlayerInkAction)
+        CONNECT_METHOD(shotBombInstant, PlayerInkAction)
 
         BIND_METHOD(0x0E696630, void, forceMoveBulletPosCenterIfLeft, PlayerInkAction, sead::Vector3<float>* position, sead::Vector3<float>* velocity)
         CONNECT_METHOD(forceMoveBulletPosCenterIfLeft, PlayerInkAction, position, velocity)

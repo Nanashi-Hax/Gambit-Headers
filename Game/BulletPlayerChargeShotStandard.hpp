@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils.hpp"
+#include "Macro.hpp"
 
 namespace Game
 {
