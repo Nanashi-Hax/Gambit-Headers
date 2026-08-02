@@ -1,0 +1,19 @@
+// Incompletely decompiled symbols
+#pragma once
+
+#include "Gambit/Cmn/SceneLayoutMgr.hpp"
+#include "UI/IRegistable.hpp"
+
+namespace Gambit
+{
+    namespace Utl
+    {
+        inline static void (*Function__registPageHandler)(Cmn::SceneLayoutMgr * sceneLayoutMgr, UI::IRegistable * iRegistable, int u0)
+            = reinterpret_cast<void (*)(Cmn::SceneLayoutMgr * sceneLayoutMgr, UI::IRegistable * iRegistable, int u0)>(ADDRESS_DATA(0x028BB150));
+
+        inline static void registPageHandler(Cmn::SceneLayoutMgr * sceneLayoutMgr, UI::IRegistable * iRegistable, int u0)
+        {
+            Function__registPageHandler(sceneLayoutMgr, iRegistable, u0);
+        }
+    }
+}

@@ -1,0 +1,44 @@
+#pragma once
+#include "Gambit.hpp"
+#include <cstdint>
+#include <cstddef>
+
+#include "Gambit/Cmn/SceneLayoutMgr.hpp"
+#include "UI/IRegistable.hpp"
+#include "UI/Impl/Name.hpp"
+
+namespace Gambit
+{
+    namespace UI
+    {
+        class PageHolder : public Impl::Name
+        {
+        public:
+            struct VTable : public Impl::Name::VTable
+            {
+            public:
+                int p0;
+                void (*createPage)(PageHolder* t);
+                uint8_t u0[0x44];
+                Cmn::SceneLayoutMgr* (*getSceneLayoutMgr)(PageHolder* t);
+                uint8_t u1[0x10];
+
+                VARIABLE(ADDRESS_DATA(0x10103FBC), PageHolder::VTable, vtable);
+                VARIABLE(ADDRESS_DATA(0x10104044), PageHolder::VTable, vtable_IRegistable);
+            };
+
+            uint8_t u0[0x8];
+            IRegistable iRegistable; static constexpr const size_t offset__iRegistable = 0x10;
+            uint8_t u1[0x14];
+
+            BIND_CONSTRUCTOR(ADDRESS_TEXT(0x0278A840), PageHolder, char const * name, int elementCount)
+            CONNECT_CONSTRUCTOR(PageHolder, name, elementCount)
+
+            void createPage() { reinterpret_cast<UI::PageHolder::VTable*>(vtable)->createPage(this); }
+            Cmn::SceneLayoutMgr* getSceneLayoutMgr() { return reinterpret_cast<UI::PageHolder::VTable*>(vtable)->getSceneLayoutMgr(this); }
+        };
+    }
+
+    static_assert(sizeof(UI::PageHolder) == 0x28, "Struct size is incorrect");
+    static_assert(sizeof(UI::PageHolder::VTable) == 0x78, "Struct size is incorrect");
+}
